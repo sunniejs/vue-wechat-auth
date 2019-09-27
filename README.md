@@ -5,7 +5,7 @@ vue 微信网页授权，基于 vue-cli3.0+webpack 4+vant ui + sass+ rem 适配�
 
 # 关于我
 
-您可以扫描添加下方的微信并备注 Soul 加交流群，给我提意见，交流学习。
+您可以扫描添加下方的微信并备注 Sol 加交流群，给我提意见，交流学习。
 
 <p>
   <img src="https://tweapp.top1buyer.com/mine.jpg" width="256" style="display:inline;">
