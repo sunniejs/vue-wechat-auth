@@ -1,22 +1,18 @@
 import Vue from 'vue'
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
-import '@/assets/css/index.scss' // global css
+import App from './App.vue'
+import router from './router'
+import store from './store'
+// 引入全局样式
+import '@/assets/css/index.scss'
+// 全局引入按需引入UI库 vant
+import '@/plugins/vant'
+//  IE 兼容
+import '@babel/polyfill'
 // 移动端适配
 import 'lib-flexible/flexible.js'
-import App from './App'
-import store from './store'
-import router from './router'
-import '@/filters' // filters
-import '@/utils/directives' // directives
-import '@/permission' // permission control
-import wechatAuth from './plugins/wechatAuth' // 微信登录插件
-// 设置appid
-Vue.use(wechatAuth, {
-  appid: process.env.VUE_APP_WECHAT_APPID
-})
-// 手机端调试工具
-import VCconsole from 'vconsole'
-Vue.use(VCconsole)
+// 授权
+import '@/permission'
+
 Vue.config.productionTip = false
 
 new Vue({

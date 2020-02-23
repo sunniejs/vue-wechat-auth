@@ -2,16 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-export const constantRoutes = [
+export const router = [
   {
     path: '/',
-    redirect: '/home'
-  },
-
-  {
-    path: '/home',
-    name: 'home',
+    name: 'index',
     component: () => import('@/views/home/index'),
+    meta: {
+      keepAlive: false
+    }
+  },
+  {
+    path: '/404',
+    name: 'error',
+    component: () => import('@/views/home/error'),
     meta: {
       keepAlive: false
     }
@@ -20,10 +23,10 @@ export const constantRoutes = [
 
 const createRouter = () =>
   new Router({
-    mode: 'history', // require service support
-    base: '/app/',
-    scrollBehavior: () => ({ y: 0 }),
-    routes: constantRoutes
+    // mode: 'history', // 如果你是 history模式 需要配置vue.config.js publicPath
+    // base: '/app/',
+    scrollBehavior: () => ({y: 0}),
+    routes: router
   })
 
 export default createRouter()

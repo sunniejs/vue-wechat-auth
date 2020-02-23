@@ -11,16 +11,6 @@ class VueWechatAuthPlugin {
     this._redirect_uri = null
   }
 
-  install(Vue, options) {
-    const wechatAuth = this
-    this.setAppId(options.appid)
-    Vue.mixin({
-      created: function() {
-        this.$wechatAuth = wechatAuth
-      }
-    })
-  }
-
   static makeState() {
     return (
       Math.random()
@@ -31,27 +21,21 @@ class VueWechatAuthPlugin {
         .substring(2, 15)
     )
   }
-
   setAppId(appid) {
     this.appid = appid
   }
-
   set redirect_uri(redirect_uri) {
     this._redirect_uri = encodeURIComponent(redirect_uri)
   }
-
   get redirect_uri() {
     return this._redirect_uri
   }
-
   get state() {
     return localStorage.getItem('wechat_auth:state')
   }
-
   set state(state) {
     localStorage.setItem('wechat_auth:state', state)
   }
-
   get authUrl() {
     if (this.appid === null) {
       throw new Error('appid must not be null')
@@ -60,15 +44,11 @@ class VueWechatAuthPlugin {
       throw new Error('redirect uri must not be null')
     }
     this.state = VueWechatAuthPlugin.makeState()
-    return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${
-      this.appid
-    }&redirect_uri=${this.redirect_uri}&response_type=code&scope=${
-      this.scope
-    }&state=${this.state}#wechat_redirect`
+    return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appid}&redirect_uri=${this.redirect_uri}&response_type=code&scope=${this.scope}&state=${this.state}#wechat_redirect`
   }
-
   returnFromWechat(redirect_uri) {
     const parsedUrl = qs.parse(redirect_uri.split('?')[1])
+
     if (process.env.NODE_ENV === 'development') {
       this.state = null
       this._code = parsedUrl.code
@@ -85,24 +65,16 @@ class VueWechatAuthPlugin {
       }
     }
   }
-
   get code() {
     if (this._code === null) {
       throw new Error('Not get the code from wechat server!')
     }
-    // console.log(this)
-    // console.log('this._code: ' + this._code)
     const code = this._code
     this._code = null
     // console.log('code: ' + code)
     return code
   }
 }
-
 const vueWechatAuthPlugin = new VueWechatAuthPlugin()
-
-// if (typeof window !== 'undefined' && window.Vue) {
-//   window.Vue.use(VueWechatAuthPlugin)
-// }
 
 export default vueWechatAuthPlugin

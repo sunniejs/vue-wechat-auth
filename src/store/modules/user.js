@@ -1,4 +1,4 @@
-import { loginByCode } from '@/api/user'
+import {loginByCode} from '@/api/user'
 import {
   saveToken,
   saveLoginStatus,
@@ -29,8 +29,8 @@ const mutations = {
 }
 
 const actions = {
-  // 登录相关，通过code获取token和用户信息
-  loginWechatAuth({ commit }, code) {
+  // 登录相关，通过code获取token和用户信息，用户根据自己的需求对接后台
+  loginWechatAuth({commit}, code) {
     const data = {
       code: code
     }
@@ -48,7 +48,7 @@ const actions = {
     })
   },
   // 设置状态
-  setLoginStatus({ commit }, query) {
+  setLoginStatus({commit}, query) {
     if (query === 0 || query === 1) {
       // 上线打开注释，本地调试注释掉，保持信息最新
       removeToken()

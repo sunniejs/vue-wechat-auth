@@ -9,7 +9,7 @@ export function loadLoginStatus() {
 }
 // 保持登录状态
 export function saveLoginStatus(status) {
-  cookies.set(LoginStatusKey, status, { expires: 7 })
+  cookies.set(LoginStatusKey, status, {expires: 7})
   return status
 }
 // 删除登录状态

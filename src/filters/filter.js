@@ -29,11 +29,9 @@ export function formatDate(time, fmt) {
 function padLeftZero(str) {
   return ('00' + str).substr(str.length)
 }
-// 转为unicode 编码
-export function encodeUnicode(str) {
-  var res = []
-  for (var i = 0; i < str.length; i++) {
-    res[i] = ('00' + str.charCodeAt(i).toString(16)).slice(-4)
-  }
-  return '\\u' + res.join('\\u')
+/*
+ * 隐藏用户手机号中间四位
+ */
+export function hidePhone(phone) {
+  return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
 }

@@ -1,9 +1,10 @@
 // 本地
 module.exports = {
-  title: '微信网页授权demo',
-  baseUrl: 'http://localhost:9018',
+  title: 'vue-wechat-auth',
+  baseUrl: 'https://test.xxx.com', // 项目地址
+  baseApi: 'https://test.xxx.com', // 本地api请求地址
   api: {
-    base_api: 'https://www.xxx.com/',
-    common_api: 'https://www.xxx.com/common'
+    base_api: 'https://xxx.xxx.com/admin',
+    common_api: 'https://xxx.xxx.com/common'
   }
 }
