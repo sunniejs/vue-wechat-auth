@@ -1,7 +1,20 @@
-# vue-h5-auth
+# vue-wechat-auth
 
-vue 微信网页授权，基于 vue-cli3.0+webpack 4+vant ui + sass+ rem 适配方案+axios，开发的微信授权方案。
-项目地址：[项目介绍](https://juejin.im/post/5d0361e66fb9a07f0052d7e7)
+vue 微信网页授权
+
+
+[项目升级介绍](https://juejin.im/post/5e50f4cdf265da57444ab7a1)
+
+vue 微信网页授权1.0.0介绍
+
+[项目介绍](https://juejin.im/post/5d0361e66fb9a07f0052d7e7)
+
+# 运行项目
+
+// 克隆项目
+git clone https://github.com/sunnie1992/vue-wechat-auth.git
+//安装依赖
+npm install 
 
 # 关于我
 
