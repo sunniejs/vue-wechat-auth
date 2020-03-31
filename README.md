@@ -12,7 +12,7 @@ vue 微信网页授权1.0.0介绍
 # 运行项目
 
 // 克隆项目
-git clone https://github.com/sunnie1992/vue-wechat-auth.git
+git clone https://github.com/sunniejs/vue-wechat-auth.git
 //安装依赖
 npm install 
 
