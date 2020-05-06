@@ -12,6 +12,15 @@ export const router = [
     }
   },
   {
+    path: '/about',
+    name: 'about',
+    component: () => import('@/views/home/about'),
+    meta: {
+      title: '关于我',
+      keepAlive: false
+    }
+  },
+  {
     path: '/404',
     name: 'error',
     component: () => import('@/views/home/error'),

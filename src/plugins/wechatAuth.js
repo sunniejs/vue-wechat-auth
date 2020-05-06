@@ -47,12 +47,15 @@ class VueWechatAuthPlugin {
     return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appid}&redirect_uri=${this.redirect_uri}&response_type=code&scope=${this.scope}&state=${this.state}#wechat_redirect`
   }
   returnFromWechat(redirect_uri) {
-    const parsedUrl = qs.parse(redirect_uri.split('?')[1])
-
+    let baseWithSearch = redirect_uri.split('#')[0]
+    let parsedUrl = ''
+    // 本地环境
     if (process.env.NODE_ENV === 'development') {
+      parsedUrl = qs.parse(redirect_uri.split('?')[1])
       this.state = null
       this._code = parsedUrl.code
     } else {
+      parsedUrl = qs.parse(baseWithSearch.split('?')[1])
       if (this.state === null) {
         throw new Error("You did't set state")
       }

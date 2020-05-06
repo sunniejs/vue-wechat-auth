@@ -20,14 +20,14 @@ router.beforeEach(async (to, from, next) => {
       break
     case 1:
       try {
-        wechatAuth.returnFromWechat(window.location.search)
+        wechatAuth.returnFromWechat(window.location.href)
         const code = wechatAuth.code
         console.log(code)
         // 通过code换取token
         // await store.dispatch('user/loginWechatAuth', code)
         await store.dispatch('user/setLoginStatus', 2)
         // hash
-        if (window.location.hash !== '') {
+        if (process.env.NODE_ENV !== 'development' && router.mode === 'hash') {
           window.location.href = window.location.origin + window.location.pathname + window.location.hash
         } else {
           next()
@@ -53,7 +53,7 @@ function processUrl() {
   // 本地环境换通过auth.html拿code
   if (process.env.NODE_ENV === 'development') {
     // 中间授权页地址
-    return `${process.env.VUE_APP_WECHAT_AUTH_URL}?backUrl=${window.location.href}`
+     return `${process.env.VUE_APP_WECHAT_AUTH_URL}?backUrl=${window.location.href}`
   }
   const url = window.location.href
   // 解决多次登录url添加重复的code与state问题
