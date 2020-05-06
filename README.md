@@ -2,10 +2,7 @@
 
 2020-05-06 更新  修复vue-router hash 生产环境拿不到code
 
-vue 微信网页授权
-
-[vue微信授权解决方案（第三次优化）](https://juejin.im/post/5e50f4cdf265da57444ab7a1)
-
+查看文档：[vue微信授权解决方案（第三次优化）](https://juejin.im/post/5e50f4cdf265da57444ab7a1)
 
 # 运行项目
 
