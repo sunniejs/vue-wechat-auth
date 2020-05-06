@@ -20,13 +20,18 @@ router.beforeEach(async (to, from, next) => {
       break
     case 1:
       try {
-        wechatAuth.returnFromWechat(to.fullPath)
+        wechatAuth.returnFromWechat(window.location.search)
         const code = wechatAuth.code
-        console.log('code==', code)
+        console.log(code)
         // 通过code换取token
         // await store.dispatch('user/loginWechatAuth', code)
         await store.dispatch('user/setLoginStatus', 2)
-        next()
+        // hash
+        if (window.location.hash !== '') {
+          window.location.href = window.location.origin + window.location.pathname + window.location.hash
+        } else {
+          next()
+        }
       } catch (err) {
         await store.dispatch('user/setLoginStatus', 0)
         next('/404')
